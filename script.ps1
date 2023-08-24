@@ -14,7 +14,7 @@ function Get-Expiration {
     }
 }
 
-Connect-MgGraph
+Connect-MgGraph -Scope User.Read.All, Application.Read.All
 
 $apps = Get-MgApplication
 $date = (Get-Date).AddDays($Days)
@@ -39,7 +39,7 @@ $apps = $apps | Where-Object {
 {
     "startGroup": true,
     "activityTitle": "$appName",
-    "activitySubtitle": "$appId",
+    "activitySubtitle": "$appDesc",
     "text": "This Azure AD application uses a $type $expiration",
     "facts": $facts,
     "potentialAction": [
@@ -60,6 +60,7 @@ $apps = $apps | Where-Object {
 $sections = $apps | ForEach-Object {
 
     $appName = $_.DisplayName
+    $appDesc = $_.Description
     $appId   = $_.AppId
     $uri     = "https://portal.azure.com/#view/Microsoft_AAD_RegisteredApps/ApplicationMenuBlade/~/Credentials/appId/$appId/isMSAApp~/false"
     $owners  = Get-MgApplicationOwner -ApplicationId $_.Id | ForEach-Object { (Get-MgUser -UserId $_.Id).DisplayName }

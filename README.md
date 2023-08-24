@@ -4,6 +4,10 @@ Friendly reminder through Teams MessageCard for secret expiration on your Azure 
 
 ![Result of the MessageCard](/capture.png)
 
+## Requirements
+
+You'll need to connect to Microsoft Graph using the PowerShell module. If you want to run this script in a scheduled task, you'll have to create an Azure AD app registration with the API permissions `User.Read.All` and `Application.Read.All`.
+
 ## Parameters
 
 There is two parameters available on the script:
