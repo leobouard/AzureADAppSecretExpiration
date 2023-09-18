@@ -17,7 +17,7 @@ There is two parameters available on the script:
 
 ## Message card
 
-Each section contains an expiring/expired secret, so you can have multiple section for one app (since an application can contains multiple secrets).
+Each section contains an expiring/expired secret, so you can have multiple sections for one app (since an application can contains multiple secrets).
 
 ## Useful resources
 
