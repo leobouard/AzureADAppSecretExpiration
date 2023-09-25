@@ -24,6 +24,8 @@ $apps = $apps | Where-Object {
     ($_.KeyCredentials -and $_.KeyCredentials.EndDateTime -lt $date)
 }
 
+if (!$apps) { exit }
+
 [string]$body = @'
 {
 	"@type": "MessageCard",
